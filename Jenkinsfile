@@ -18,5 +18,10 @@ pipeline {
                 archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
             }
         }
+	stage('SonarQube Analysis') {
+            steps {
+                sh '/opt/gradle-8.5/bin/gradle sonar'
+            }
+        }
     }
 }
